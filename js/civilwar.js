@@ -340,16 +340,18 @@ function fillProgress(forProj, value) {
                 ironmanTgLockedAud.play()
             }
 
-            else {
-                ironmanTgLockedAud.currentTime = 0
-                ironmanTgLockedAud.pause()
-            }
+            else stopTargetLocked()
 
             setTimeout(() => fillProgress(forProj, value + 20), 1000);
         }
     }
 }
 
+
+function stopTargetLocked() {
+    ironmanTgLockedAud.currentTime = 0
+    ironmanTgLockedAud.pause()
+}
 
 // detect collison
 function detectCollision(elem1, elem2, damage) {
@@ -421,6 +423,7 @@ function addAndRemoveEvent(listner, funcName, charCMD) {
 
 // Reset Game
 function resetGame(data) {
+    stopTargetLocked()
     // stoping game logixs
     isGameRunning = false
     gameMusic.pause()
